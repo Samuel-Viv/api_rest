@@ -8,7 +8,7 @@ router.get('/', async(req, res) => {
     name : process.env.APP_NAME,
     version: '1.0',
     status: 200,
-    message: 'Bienvenue sur l\'API'
+    message: 'Bienvenue sur l\'API !'
   })
 });
 

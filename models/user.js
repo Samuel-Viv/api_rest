@@ -31,7 +31,7 @@ const User = new Schema({
 })
 
 //Hash le mot de passe quand il est modifié
-User.pre("save", function(next){
+User.pre('save', function(next){
     if (!this.isModified('password')) {
         return next();
     }
