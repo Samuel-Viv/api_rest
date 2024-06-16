@@ -1,9 +1,5 @@
 const mongoose = require('mongoose');
 
-const clientOptions = {
-    useNewUrlParser : true,
-    dbName :'apinode'
-};
 
 exports.initClientDbConnection = async () => {
     try{ 
@@ -13,7 +9,7 @@ exports.initClientDbConnection = async () => {
         Il faut donc ne pas oublier au fichier .env.
         URL_MONGO prend pour valeur la chaine de connection de votre cluster mongoDB.
          */
-        await mongoose.connect(process.env.URL_MONGO, clientOptions)
+        await mongoose.connect(process.env.URL_MONGO)
         console.log('Connected');
     } catch (error) {
         console.log(error);
