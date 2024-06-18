@@ -12,9 +12,12 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
+const ejs = require('ejs')
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const fileRouter = require('./routes/files.js');
 const mongodb = require('./db/mongo.js'); 
 
 mongodb.initClientDbConnection();
@@ -33,9 +36,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/files', fileRouter);
 
 app.use(function(req, res, next) {
     res.status(404).json({name:'API', version:"1.0", status: 404, message: 'not_found'})
 });
+
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'ejs')
 
 module.exports = app;
